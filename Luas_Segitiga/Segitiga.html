@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hitung Luas Segitiga</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+      }
+      .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div class="flex-center">
+      <div class="container mx-auto p-5 bg-white rounded-lg shadow-lg max-w-md">
+        <h2 class="text-center text-2xl font-bold text-black">Menghitung Luas Segitiga</h2>
+        <form id="form-luas" class="mt-4">
+          <div class="form-group row flex items-center mb-4 justify-center">
+            <label for="alas" class="col-sm-3 col-form-label font-bold text-gray-700">Alas :</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control border border-gray-300 p-2 w-full rounded" id="alas" placeholder="Masukkan alas segitiga" required />
+            </div>
+          </div>
+          <div class="form-group row flex items-center mb-4 justify-center">
+            <label for="tinggi" class="col-sm-3 col-form-label font-bold text-gray-700">Tinggi :</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control border border-gray-300 p-2 w-full rounded" id="tinggi" placeholder="Masukkan tinggi segitiga" required />
+            </div>
+          </div>
+          <div class="form-group row flex justify-center">
+            <button type="submit" class="btn bg-blue-500 text-white p-2 rounded mr-2 hover:bg-blue-700">Hitung Luas</button>
+            <button type="reset" class="btn bg-gray-500 text-white p-2 rounded hover:bg-gray-700">Reset</button>
+          </div>
+        </form>
+        <div class="mt-4 text-center">
+          <h4 class="font-bold text-gray-700">Hasil:</h4>
+          <p id="hasil" class="text-green-500 font-bold"></p>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("form-luas").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var alas = parseFloat(document.getElementById("alas").value);
+        var tinggi = parseFloat(document.getElementById("tinggi").value);
+
+        if (isNaN(alas) || isNaN(tinggi) || alas <= 0 || tinggi <= 0) {
+          alert("Masukkan nilai alas dan tinggi yang valid!");
+          return;
+        }
+
+        var luas = 0.5 * alas * tinggi;
+
+        document.getElementById("hasil").innerText = + luas;
+      });
+    </script>
+  </body>
+</html>
